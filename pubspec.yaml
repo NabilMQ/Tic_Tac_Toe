@@ -1,0 +1,42 @@
+name: tic_tac_toe
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_layout_grid: ^2.0.4
+  provider: ^6.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: "RobotoCondensed"
+      fonts:
+        - asset: assets/fonts/RobotoCondensed-Light.ttf
+          style: normal
+          weight: 100
+        - asset: assets/fonts/RobotoCondensed-LightItalic.ttf
+          style: italic
+          weight: 100
+        - asset: assets/fonts/RobotoCondensed-Regular.ttf
+          style: normal
+          weight: 400
+        - asset: assets/fonts/RobotoCondensed-Italic.ttf
+          style: italic
+          weight: 400
+        - asset: assets/fonts/RobotoCondensed-Bold.ttf
+          style: normal
+          weight: 700
+        - asset: assets/fonts/RobotoCondensed-BoldItalic.ttf
+          style: italic
+          weight: 700 

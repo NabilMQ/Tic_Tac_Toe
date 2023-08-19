@@ -1,3 +1,3 @@
 # tic_tac_toe
 
-A new Flutter project.
+A tic tac toe app project (far from complete)

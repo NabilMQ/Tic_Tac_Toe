@@ -20,7 +20,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: "RobotoCondensed"
+    - family: RobotoCondensed
       fonts:
         - asset: assets/fonts/RobotoCondensed-Light.ttf
           style: normal
@@ -40,3 +40,6 @@ flutter:
         - asset: assets/fonts/RobotoCondensed-BoldItalic.ttf
           style: italic
           weight: 700 
+    - family: CustomIcons
+      fonts:
+        - asset: assets/icons/MyFlutterApp.ttf

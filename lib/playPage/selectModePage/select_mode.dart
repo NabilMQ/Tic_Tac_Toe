@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
 
 Route toSelectModePage() {
   return PageRouteBuilder(
@@ -36,9 +37,6 @@ class _SelectModeState extends State<SelectMode> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-      ),
       body: Container(
         width: width,
         height: height,
@@ -48,7 +46,52 @@ class _SelectModeState extends State<SelectMode> {
           rowSizes: List.generate(40, (index) => 1.fr),
           columnGap: 8,
           rowGap: 8,
-          children: const [
+          children: [
+            GridPlacement(
+              columnStart: 1,
+              columnSpan: 6,
+              rowStart: 3,
+              rowSpan: 5,
+              child: Container(
+                child: const Center(
+                  child: Text(
+                    "Select Mode",
+                    style: TextStyle(
+                        fontFamily: "Roboto Condensed",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 24,
+                        letterSpacing: 0,
+                      ),
+                  ),
+                ),
+              ),
+            ),
+
+            GridPlacement(
+              columnStart: 2,
+              columnSpan: 4,
+              rowStart: 12,
+              rowSpan: 9,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+
+            GridPlacement (
+              columnStart: 2,
+              columnSpan: 4,
+              rowStart: 23,
+              rowSpan: 9,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+              ),
+            )
           ],
         ),
       ),

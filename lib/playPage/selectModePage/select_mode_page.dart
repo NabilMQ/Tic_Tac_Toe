@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
+import 'package:tic_tac_toe/globalWidget/header.dart';
+import 'button.dart';
+import 'package:tic_tac_toe/playPage/playingPage/playing_page.dart';
 
 Route toSelectModePage() {
   return PageRouteBuilder(
@@ -47,24 +50,14 @@ class _SelectModeState extends State<SelectMode> {
           columnGap: 8,
           rowGap: 8,
           children: [
-            GridPlacement(
+            const GridPlacement(
               columnStart: 1,
               columnSpan: 6,
               rowStart: 3,
               rowSpan: 5,
-              child: Container(
-                child: const Center(
-                  child: Text(
-                    "Select Mode",
-                    style: TextStyle(
-                        fontFamily: "Roboto Condensed",
-                        fontWeight: FontWeight.normal,
-                        fontSize: 24,
-                        letterSpacing: 0,
-                      ),
-                  ),
-                ),
-              ),
+              child: Header(
+                text: "Select Mode",
+              )
             ),
 
             GridPlacement(
@@ -72,11 +65,10 @@ class _SelectModeState extends State<SelectMode> {
               columnSpan: 4,
               rowStart: 12,
               rowSpan: 9,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
+              child: Button(
+                route: () {
+                  Navigator.of(context).push(toPlayingPage());
+                },
               ),
             ),
 
@@ -108,12 +100,12 @@ class _SelectModeState extends State<SelectMode> {
                   child: Center(
                     child: Text(
                       "Player Vs Computer",
-                      style: TextStyle(
-                      fontFamily: "Roboto Condensed",
-                      fontWeight: FontWeight.normal,
-                      fontSize: 12,
-                      letterSpacing: 0,
-                    ),
+                        style: TextStyle(
+                        fontFamily: "Roboto Condensed",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12,
+                        letterSpacing: 0,
+                      ),
                     )
                   ),
                 ),
@@ -125,11 +117,10 @@ class _SelectModeState extends State<SelectMode> {
               columnSpan: 4,
               rowStart: 23,
               rowSpan: 9,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
+              child: Button(
+                route: () {
+                  Navigator.of(context).push(toPlayingPage());
+                },
               ),
             ),
 
@@ -162,17 +153,16 @@ class _SelectModeState extends State<SelectMode> {
                     child: Text(
                       "Player Vs Player",
                       style: TextStyle(
-                      fontFamily: "Roboto Condensed",
-                      fontWeight: FontWeight.normal,
-                      fontSize: 12,
-                      letterSpacing: 0,
-                    ),
+                        fontFamily: "Roboto Condensed",
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12,
+                        letterSpacing: 0,
+                      ),
                     )
                   ),
                 ),
               ),
             ),
-
           ],
         ),
       ),

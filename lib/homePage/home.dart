@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
-import 'button.dart';
-import 'package:tic_tac_toe/playPage/selectModePage/select_mode.dart';
+import 'package:tic_tac_toe/playPage/selectModePage/select_mode_page.dart';
+import 'package:tic_tac_toe/globalWidget/header.dart';
+import 'package:tic_tac_toe/homePage/button.dart';
 
 class Home extends StatefulWidget {
   const Home({ Key? key }) : super(key: key);
@@ -50,9 +51,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               columnSpan: 6,
               rowStart: 3,
               rowSpan: 5,
-              child: Button(
+              child: Header(
                 text: "Tic Tac Toe",
-                fontSize: 24,
               )
             ),
     

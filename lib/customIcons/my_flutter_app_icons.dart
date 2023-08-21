@@ -24,8 +24,10 @@ class CustomIcons {
   static const IconData check2 = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData circle = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData laptop = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // ignore: constant_identifier_names
   static const IconData menu_button_wide = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData person = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // ignore: constant_identifier_names
   static const IconData x_lg = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData play = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

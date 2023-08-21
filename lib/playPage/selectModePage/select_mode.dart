@@ -80,6 +80,46 @@ class _SelectModeState extends State<SelectMode> {
               ),
             ),
 
+            const GridPlacement(
+              columnStart: 3,
+              columnSpan: 2,
+              rowStart: 14,
+              rowSpan: 3,
+              child: SizedBox.expand(
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Center(
+                    child: Icon(
+                      CustomIcons.laptop,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const GridPlacement(
+              columnStart: 2,
+              columnSpan: 4,
+              rowStart: 17,
+              rowSpan: 3,
+              child: SizedBox.expand(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Center(
+                    child: Text(
+                      "Player Vs Computer",
+                      style: TextStyle(
+                      fontFamily: "Roboto Condensed",
+                      fontWeight: FontWeight.normal,
+                      fontSize: 12,
+                      letterSpacing: 0,
+                    ),
+                    )
+                  ),
+                ),
+              ),
+            ),
+
             GridPlacement (
               columnStart: 2,
               columnSpan: 4,
@@ -91,7 +131,48 @@ class _SelectModeState extends State<SelectMode> {
                   color: Colors.white,
                 ),
               ),
-            )
+            ),
+
+            const GridPlacement(
+              columnStart: 3,
+              columnSpan: 2,
+              rowStart: 25,
+              rowSpan: 3,
+              child: SizedBox.expand(
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Center(
+                    child: Icon(
+                      CustomIcons.person,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const GridPlacement(
+              columnStart: 2,
+              columnSpan: 4,
+              rowStart: 28,
+              rowSpan: 3,
+              child: SizedBox.expand(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Center(
+                    child: Text(
+                      "Player Vs Player",
+                      style: TextStyle(
+                      fontFamily: "Roboto Condensed",
+                      fontWeight: FontWeight.normal,
+                      fontSize: 12,
+                      letterSpacing: 0,
+                    ),
+                    )
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),

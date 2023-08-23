@@ -50,6 +50,7 @@ class _SelectModeState extends State<SelectMode> {
           columnGap: 8,
           rowGap: 8,
           children: [
+            
             const GridPlacement(
               columnStart: 1,
               columnSpan: 6,
@@ -66,49 +67,11 @@ class _SelectModeState extends State<SelectMode> {
               rowStart: 12,
               rowSpan: 9,
               child: Button(
+                text: "Player Vs Computer",
+                icon: CustomIcons.laptop,
                 route: () {
                   Navigator.of(context).push(toPlayingPage());
                 },
-              ),
-            ),
-
-            const GridPlacement(
-              columnStart: 3,
-              columnSpan: 2,
-              rowStart: 14,
-              rowSpan: 3,
-              child: SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Center(
-                    child: Icon(
-                      CustomIcons.laptop,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            const GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 17,
-              rowSpan: 3,
-              child: SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Center(
-                    child: Text(
-                      "Player Vs Computer",
-                        style: TextStyle(
-                        fontFamily: "Roboto Condensed",
-                        fontWeight: FontWeight.normal,
-                        fontSize: 12,
-                        letterSpacing: 0,
-                      ),
-                    )
-                  ),
-                ),
               ),
             ),
 
@@ -118,51 +81,14 @@ class _SelectModeState extends State<SelectMode> {
               rowStart: 23,
               rowSpan: 9,
               child: Button(
+                text: "Player Vs Player",
+                icon: CustomIcons.person,
                 route: () {
                   Navigator.of(context).push(toPlayingPage());
                 },
               ),
             ),
 
-            const GridPlacement(
-              columnStart: 3,
-              columnSpan: 2,
-              rowStart: 25,
-              rowSpan: 3,
-              child: SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Center(
-                    child: Icon(
-                      CustomIcons.person,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            const GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 28,
-              rowSpan: 3,
-              child: SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Center(
-                    child: Text(
-                      "Player Vs Player",
-                      style: TextStyle(
-                        fontFamily: "Roboto Condensed",
-                        fontWeight: FontWeight.normal,
-                        fontSize: 12,
-                        letterSpacing: 0,
-                      ),
-                    )
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),

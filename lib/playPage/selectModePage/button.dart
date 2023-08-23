@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 class Button extends StatefulWidget {
   const Button({ 
     Key? key,
+    required this.text,
+    required this.icon,
     this.route,
     this.isPop = false,
   }) : super(key: key);
 
+  final String text;
+  final IconData icon;
   final Function? route;
   final bool isPop;
 
@@ -18,6 +22,7 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
 
   late AnimationController _controllerColor;
   late Animation <int> _colorAnimation;
+  bool clicked = false;
 
   @override
   void initState() {
@@ -50,20 +55,24 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (_) {
-        _controllerColor.forward();
-        Future.delayed(const Duration(milliseconds: 250), () {
-          _controllerColor.reverse();
-        });
+        if (!clicked) {
+          clicked = true;
+          _controllerColor.forward();
+          Future.delayed(const Duration(milliseconds: 250), () {
+            _controllerColor.reverse();
+          });
 
-        Future.delayed(const Duration(milliseconds: 250), () {
-          if (widget.route != null) {
-            widget.route!.call();
-          }
-          
-          if (widget.isPop) {
-            Navigator.of(context).pop();
-          }
-        });
+          Future.delayed(const Duration(milliseconds: 250), () {
+            if (widget.route != null) {
+              widget.route!.call();
+              clicked = false;
+            }
+            
+            if (widget.isPop) {
+              Navigator.of(context).pop();
+            }
+          });
+        }
       },
       child: Stack(
         children: [
@@ -86,6 +95,71 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
                 ),
               );
             },
+          ),
+
+          Column(
+            children: [
+
+              const Expanded(
+                flex: 4,
+                child: SizedBox.expand(),
+              ),
+
+              Expanded(
+                flex: 5,
+                child: SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Center(
+                      child: Icon(
+                        widget.icon,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Expanded(
+                flex: 5,
+                child: SizedBox.expand(
+                  child: Row(
+                    children: [
+                      const Expanded(
+                        flex: 1,
+                        child: SizedBox.expand(),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Center(
+                            child: Text(
+                              widget.text,
+                              style: const TextStyle(
+                                fontFamily: "Roboto Condensed",
+                                fontWeight: FontWeight.normal,
+                                fontSize: 18,
+                                letterSpacing: 0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Expanded(
+                        flex: 1,
+                        child: SizedBox.expand(),
+                      ),
+                    ]
+                  ),
+                ),
+              ),
+
+              const Expanded(
+                flex: 2,
+                child: SizedBox.expand(),
+              ),
+
+            ],
           ),
         ]
       ),

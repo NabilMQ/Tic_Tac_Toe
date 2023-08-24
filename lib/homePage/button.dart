@@ -89,13 +89,16 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
                   color: Colors.white,
                 ),
                 child: Center(
-                  child: Text(
-                    widget.text,
-                    style: TextStyle(
-                      fontFamily: "Roboto Condensed",
-                      fontWeight: FontWeight.normal,
-                      fontSize: widget.fontSize,
-                      letterSpacing: 0,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      widget.text,
+                      style: TextStyle(
+                        fontFamily: "Roboto Condensed",
+                        fontWeight: FontWeight.normal,
+                        fontSize: widget.fontSize,
+                        letterSpacing: 0,
+                      ),
                     ),
                   ),
                 ),

@@ -13,9 +13,9 @@ class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Center(
+      child: Center(
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
           child: Text(
             widget.text,
             style: const TextStyle(

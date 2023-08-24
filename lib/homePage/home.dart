@@ -3,6 +3,7 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:tic_tac_toe/playPage/selectModePage/select_mode_page.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:tic_tac_toe/homePage/button.dart';
+import 'package:tic_tac_toe/homePage/text_animation.dart';
 
 class Home extends StatefulWidget {
   const Home({ Key? key }) : super(key: key);
@@ -12,22 +13,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-
-  late AnimationController _controller;
-  late Animation <int> _colorAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    )..repeat(reverse: true);
-
-    _colorAnimation = IntTween(begin: 230, end: 200).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,27 +77,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               )
             ),
     
-            GridPlacement(
+            const GridPlacement(
               columnStart: 2,
               columnSpan: 4,
               rowStart: 37,
               rowSpan: 2,
-              child: Center(
-                child: AnimatedBuilder(
-                  animation: _colorAnimation,
-                  builder: (context, child) {
-                    return Text(
-                      "Developed by Namuqi",
-                      style: TextStyle(
-                        color: Color.fromARGB(255,  _colorAnimation.value, _colorAnimation.value, _colorAnimation.value),
-                        fontFamily: "Roboto Condensed",
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                        letterSpacing: 0,
-                      ),
-                    );
-                  },
-                ),
+              child: TextAnimation(
+                text: "Developed by Namuqi",
               ),
             ),
           ],

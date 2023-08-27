@@ -31,6 +31,12 @@ class _TextAnimationState extends State <TextAnimation> with SingleTickerProvide
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: AnimatedBuilder(

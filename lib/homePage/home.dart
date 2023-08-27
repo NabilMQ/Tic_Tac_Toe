@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
   State <Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
@@ -120,9 +120,17 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   
                   BlankContainer(flex: 1),
 
-                  const Expanded(
+                  Expanded(
                     flex: 2,
-                    child: TextAnimation(text: "Developed by Namuqi"),
+                    child: Column(
+                      children: [
+                        BlankContainer(flex: 1),
+                        Expanded(
+                          flex: 2,
+                          child: TextAnimation(text: "Developed by Namuqi")),
+                        BlankContainer(flex: 1),
+                      ],
+                    ),
                   ),
 
                   BlankContainer(flex: 1),

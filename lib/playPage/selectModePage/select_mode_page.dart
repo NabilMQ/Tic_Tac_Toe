@@ -46,13 +46,13 @@ class _SelectModeState extends State<SelectMode> {
         color: const Color.fromARGB(100, 250, 250, 250),
         child: Column(
           children: [
-            BlankContainer(flex: 6),
+            const BlankContainer(flex: 6),
 
             // header
             Expanded(
               flex: 9,
               child: Row(
-                children: [
+                children: const [
                   BlankContainer(flex: 1),
                   Expanded(
                     flex: 6,
@@ -65,13 +65,13 @@ class _SelectModeState extends State<SelectMode> {
               )
             ),
 
-            BlankContainer(flex: 9),
+            const BlankContainer(flex: 9),
 
             Expanded(
               flex: 17,
               child: Row(
                 children: [
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
                   Expanded(
                     flex: 2,
                     child: Button(
@@ -82,18 +82,18 @@ class _SelectModeState extends State<SelectMode> {
                       },
                     ),
                   ),
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
                 ],
               ),
             ),
 
-            BlankContainer(flex: 5),
+            const BlankContainer(flex: 5),
 
             Expanded(
               flex: 17,
               child: Row(
                 children: [
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
                   Expanded(
                     flex: 2,
                     child: Button(
@@ -104,12 +104,12 @@ class _SelectModeState extends State<SelectMode> {
                       },
                     ),
                   ),
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
                 ],
               ),
             ),
 
-            BlankContainer(flex: 16),
+            const BlankContainer(flex: 16),
           ],
         ),
       ),

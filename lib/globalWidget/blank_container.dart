@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BlankContainer extends StatefulWidget {
-  BlankContainer({
+  const BlankContainer({
      Key? key,
      required this.flex,
     }) : super(key: key);
 
-  int flex;
+  final int flex;
 
   @override
   State <BlankContainer> createState() => _BlankContainerState();
@@ -17,7 +17,7 @@ class _BlankContainerState extends State<BlankContainer> {
   Widget build(BuildContext context) {
     return Expanded(
       flex: widget.flex,
-      child: SizedBox.expand(),
+      child: const SizedBox.expand(),
     );
   }
 }

@@ -28,15 +28,15 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             
-            BlankContainer(flex: 6),
+            const BlankContainer(flex: 6),
             
             // header
             Expanded(
               flex: 9,
               child: Row(
-                children: [                
+                children: const [                
                   BlankContainer(flex: 1),
-                  const Expanded(
+                  Expanded(
                     flex: 6,
                     child: Header(text: "Tic Tac Toe"),
                   ),
@@ -45,14 +45,14 @@ class _HomeState extends State<Home> {
               ),
             ),
             
-            BlankContainer(flex: 11),
+            const BlankContainer(flex: 11),
 
             // play button
             Expanded(
               flex: 7,
               child: Row(
                 children: [
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
                   Expanded(
                     flex: 2,
                     child: Button(
@@ -62,18 +62,18 @@ class _HomeState extends State<Home> {
                       }
                     ),
                   ),
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
                 ],
               ),
             ),
 
-            BlankContainer(flex: 5),
+            const BlankContainer(flex: 5),
 
             // option button
             Expanded(
               flex: 7,
               child: Row(
-                children: [
+                children: const [
                   BlankContainer(flex: 1),
                   Expanded(
                     flex: 2,
@@ -87,13 +87,13 @@ class _HomeState extends State<Home> {
               ),
             ),
 
-            BlankContainer(flex: 5),
+            const BlankContainer(flex: 5),
 
             // quit button
             Expanded(
               flex: 7,
               child: Row(
-                children: [
+                children: const [
                   
                   BlankContainer(flex: 1),
 
@@ -111,19 +111,19 @@ class _HomeState extends State<Home> {
             ),
 
 
-            BlankContainer(flex: 17),
+            const BlankContainer(flex: 17),
 
             Expanded(
               flex: 5,
               child: Row(
                 children: [
                   
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
 
                   Expanded(
                     flex: 2,
                     child: Column(
-                      children: [
+                      children: const [
                         BlankContainer(flex: 1),
                         Expanded(
                           flex: 2,
@@ -133,7 +133,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
 
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 1),
 
                 ],
               ),

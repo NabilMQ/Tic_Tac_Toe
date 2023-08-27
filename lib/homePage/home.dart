@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'blank_container.dart';
 import 'package:tic_tac_toe/playPage/selectModePage/select_mode_page.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:tic_tac_toe/homePage/button.dart';
@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
   State <Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
@@ -25,69 +25,114 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         width: width,
         height: height,
         color: const Color.fromARGB(100, 250, 250, 250),
-        child: LayoutGrid(
-          columnSizes: List.generate(8, (index) => 1.fr),
-          rowSizes: List.generate(40, (index) => 1.fr),
-          columnGap: 8,
-          rowGap: 8,
+        child: Column(
           children: [
-            const GridPlacement(
-              columnStart: 1,
-              columnSpan: 6,
-              rowStart: 3,
-              rowSpan: 5,
-              child: Header(
-                text: "Tic Tac Toe",
-              )
-            ),
-    
-            GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 13,
-              rowSpan: 4,
-              child: Button(
-                text: "Play",
-                fontSize: 16,
-                route: () {
-                  Navigator.of(context).push(toSelectModePage());
-                }
-              )
-            ),
-    
-            const GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 19,
-              rowSpan: 4,
-              child: Button(
-                text: "Option",
-                fontSize: 16,
-              )
-            ),
-    
-            const GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 25,
-              rowSpan: 4,
-              child: Button(
-                text: "Quit",
-                fontSize: 16,
-              )
-            ),
-    
-            const GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 37,
-              rowSpan: 2,
-              child: TextAnimation(
-                text: "Developed by Namuqi",
+            
+            BlankContainer(flex: 6),
+            
+            // header
+            Expanded(
+              flex: 9,
+              child: Row(
+                children: [                
+                  BlankContainer(flex: 1),
+                  const Expanded(
+                    flex: 6,
+                    child: Header(text: "Tic Tac Toe"),
+                  ),
+                  BlankContainer(flex: 1),
+                ],
               ),
             ),
+            
+            BlankContainer(flex: 11),
+
+            // play button
+            Expanded(
+              flex: 7,
+              child: Row(
+                children: [
+                  BlankContainer(flex: 1),
+                  Expanded(
+                    flex: 2,
+                    child: Button(
+                      text: "Play",
+                      route: () {
+                        Navigator.of(context).push(toSelectModePage());
+                      }
+                    ),
+                  ),
+                  BlankContainer(flex: 1),
+                ],
+              ),
+            ),
+
+            BlankContainer(flex: 5),
+
+            // option button
+            Expanded(
+              flex: 7,
+              child: Row(
+                children: [
+                  BlankContainer(flex: 1),
+                  Expanded(
+                    flex: 2,
+                    child: Button(
+                      text: "Option",
+                    ),
+                  ),
+
+                  BlankContainer(flex: 1),
+                ],
+              ),
+            ),
+
+            BlankContainer(flex: 5),
+
+            // quit button
+            Expanded(
+              flex: 7,
+              child: Row(
+                children: [
+                  
+                  BlankContainer(flex: 1),
+
+                  Expanded(
+                    flex: 2,
+                    child: Button(
+                      text: "Quit",
+                    ),
+                  ),
+
+                  BlankContainer(flex: 1),
+
+                ],
+              ),
+            ),
+
+
+            BlankContainer(flex: 17),
+
+            Expanded(
+              flex: 5,
+              child: Row(
+                children: [
+                  
+                  BlankContainer(flex: 1),
+
+                  const Expanded(
+                    flex: 2,
+                    child: TextAnimation(text: "Developed by Namuqi"),
+                  ),
+
+                  BlankContainer(flex: 1),
+
+                ],
+              ),
+            ),
+
           ],
-        ),
+        )
       ),
     );
   }

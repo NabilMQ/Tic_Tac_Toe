@@ -4,13 +4,11 @@ class Button extends StatefulWidget {
   const Button({ 
     Key? key,
     required this.text,
-    required this.fontSize,
     this.route,
     this.isPop = false,
   }) : super(key: key);
 
   final String text;
-  final double fontSize;
   final Function? route;
   final bool isPop;
 
@@ -93,10 +91,10 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
                     fit: BoxFit.scaleDown,
                     child: Text(
                       widget.text,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "Roboto Condensed",
                         fontWeight: FontWeight.normal,
-                        fontSize: widget.fontSize,
+                        fontSize: 16,
                         letterSpacing: 0,
                       ),
                     ),

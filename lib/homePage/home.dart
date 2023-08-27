@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'blank_container.dart';
+import '../globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/playPage/selectModePage/select_mode_page.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:tic_tac_toe/homePage/button.dart';

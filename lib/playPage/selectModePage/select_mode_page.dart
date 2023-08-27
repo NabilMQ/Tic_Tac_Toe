@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
+import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'button.dart';
 import 'package:tic_tac_toe/playPage/playingPage/playing_page.dart';
 
@@ -44,51 +44,72 @@ class _SelectModeState extends State<SelectMode> {
         width: width,
         height: height,
         color: const Color.fromARGB(100, 250, 250, 250),
-        child: LayoutGrid(
-          columnSizes: List.generate(8, (index) => 1.fr),
-          rowSizes: List.generate(40, (index) => 1.fr),
-          columnGap: 8,
-          rowGap: 8,
+        child: Column(
           children: [
-            
-            const GridPlacement(
-              columnStart: 1,
-              columnSpan: 6,
-              rowStart: 3,
-              rowSpan: 5,
-              child: Header(
-                text: "Select Mode",
+            BlankContainer(flex: 6),
+
+            // header
+            Expanded(
+              flex: 9,
+              child: Row(
+                children: [
+                  BlankContainer(flex: 1),
+                  Expanded(
+                    flex: 6,
+                    child: Header(
+                      text: "Select Mode",
+                    ),
+                  ),
+                  BlankContainer(flex: 1),
+                ],
               )
             ),
 
-            GridPlacement(
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 12,
-              rowSpan: 9,
-              child: Button(
-                text: "Player Vs Computer",
-                icon: CustomIcons.laptop,
-                route: () {
-                  Navigator.of(context).push(toPlayingPage());
-                },
+            BlankContainer(flex: 9),
+
+            Expanded(
+              flex: 17,
+              child: Row(
+                children: [
+                  BlankContainer(flex: 1),
+                  Expanded(
+                    flex: 2,
+                    child: Button(
+                      text: "Player Vs Computer",
+                      icon: CustomIcons.laptop,
+                      route: () {
+                        Navigator.of(context).push(toPlayingPage());
+                      },
+                    ),
+                  ),
+                  BlankContainer(flex: 1),
+                ],
               ),
             ),
 
-            GridPlacement (
-              columnStart: 2,
-              columnSpan: 4,
-              rowStart: 23,
-              rowSpan: 9,
-              child: Button(
-                text: "Player Vs Player",
-                icon: CustomIcons.person,
-                route: () {
-                  Navigator.of(context).push(toPlayingPage());
-                },
+            BlankContainer(flex: 5),
+
+            Expanded(
+              flex: 17,
+              child: Row(
+                children: [
+                  BlankContainer(flex: 1),
+                  Expanded(
+                    flex: 2,
+                    child: Button(
+                      text: "Player Vs Player",
+                      icon: CustomIcons.person,
+                      route: () {
+                        Navigator.of(context).push(toPlayingPage());
+                      },
+                    ),
+                  ),
+                  BlankContainer(flex: 1),
+                ],
               ),
             ),
 
+            BlankContainer(flex: 16),
           ],
         ),
       ),

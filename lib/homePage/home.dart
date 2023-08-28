@@ -81,7 +81,6 @@ class _HomeState extends State<Home> {
                       text: "Option",
                     ),
                   ),
-
                   BlankContainer(flex: 1),
                 ],
               ),
@@ -96,14 +95,13 @@ class _HomeState extends State<Home> {
                 children: const [
                   
                   BlankContainer(flex: 1),
-
                   Expanded(
                     flex: 2,
                     child: Button(
                       text: "Quit",
+                      isExit: true,
                     ),
                   ),
-
                   BlankContainer(flex: 1),
 
                 ],
@@ -119,7 +117,6 @@ class _HomeState extends State<Home> {
                 children: [
                   
                   const BlankContainer(flex: 1),
-
                   Expanded(
                     flex: 2,
                     child: Column(
@@ -132,7 +129,6 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-
                   const BlankContainer(flex: 1),
 
                 ],

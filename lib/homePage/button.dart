@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Button extends StatefulWidget {
   const Button({ 
@@ -6,11 +7,13 @@ class Button extends StatefulWidget {
     required this.text,
     this.route,
     this.isPop = false,
+    this.isExit = false,
   }) : super(key: key);
 
   final String text;
   final Function? route;
   final bool isPop;
+  final bool isExit;
 
   @override
   State <Button> createState() => _ButtonState();
@@ -25,8 +28,8 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    if (widget.route != null && widget.isPop != false) {
-      throw "Route or Pop?";
+    if ((widget.route != null && widget.isPop != false) || (widget.route != null && widget.isExit != false) || (widget.isPop != false && widget.isExit != false)) {
+      throw "Choose one";
     }
 
     _controllerColor = AnimationController(
@@ -64,6 +67,10 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
           
           if (widget.isPop) {
             Navigator.of(context).pop();
+          }
+
+          if (widget.isExit) {
+            SystemNavigator.pop();
           }
         });
       },

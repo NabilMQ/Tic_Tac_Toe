@@ -49,10 +49,10 @@ class _SelectModeState extends State<SelectMode> {
             const BlankContainer(flex: 6),
 
             // header
-            Expanded(
+            const Expanded(
               flex: 9,
               child: Row(
-                children: const [
+                children: [
                   BlankContainer(flex: 1),
                   Expanded(
                     flex: 6,

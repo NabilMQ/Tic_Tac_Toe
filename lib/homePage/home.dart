@@ -31,10 +31,10 @@ class _HomeState extends State<Home> {
             const BlankContainer(flex: 6),
             
             // header
-            Expanded(
+            const Expanded(
               flex: 9,
               child: Row(
-                children: const [                
+                children: [                
                   BlankContainer(flex: 1),
                   Expanded(
                     flex: 6,
@@ -70,10 +70,10 @@ class _HomeState extends State<Home> {
             const BlankContainer(flex: 5),
 
             // option button
-            Expanded(
+            const Expanded(
               flex: 7,
               child: Row(
-                children: const [
+                children: [
                   BlankContainer(flex: 1),
                   Expanded(
                     flex: 2,
@@ -89,10 +89,10 @@ class _HomeState extends State<Home> {
             const BlankContainer(flex: 5),
 
             // quit button
-            Expanded(
+            const Expanded(
               flex: 7,
               child: Row(
-                children: const [
+                children: [
                   
                   BlankContainer(flex: 1),
                   Expanded(
@@ -111,16 +111,16 @@ class _HomeState extends State<Home> {
 
             const BlankContainer(flex: 17),
 
-            Expanded(
+            const Expanded(
               flex: 5,
               child: Row(
                 children: [
                   
-                  const BlankContainer(flex: 1),
+                  BlankContainer(flex: 1),
                   Expanded(
                     flex: 2,
                     child: Column(
-                      children: const [
+                      children: [
                         BlankContainer(flex: 1),
                         Expanded(
                           flex: 2,
@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  const BlankContainer(flex: 1),
+                  BlankContainer(flex: 1),
 
                 ],
               ),

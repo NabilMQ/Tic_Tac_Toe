@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
+import 'dart:math';
 
 Route toPlayingPage() {
   return PageRouteBuilder(
@@ -29,7 +30,33 @@ class PlayingPage extends StatefulWidget {
   State <PlayingPage> createState() => _PlayingPageState();
 }
 
-class _PlayingPageState extends State<PlayingPage> {
+class _PlayingPageState extends State<PlayingPage> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+  late Animation <double> _opacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -75,10 +102,30 @@ class _PlayingPageState extends State<PlayingPage> {
                       children: List.generate(9, (index) {
                         return AspectRatio(
                           aspectRatio: 1.0 / 1.0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
+                          child: GestureDetector(
+                            onTap: () {
+                              _controller.forward();
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                              ),
+                              child: AnimatedBuilder(
+                                animation: _opacityAnimation,
+                                builder: (context, child) {
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(max(height, width)),
+                                      border: Border.all(
+                                        color: Color.fromRGBO(171, 171, 171, _opacityAnimation.value),
+                                        width: 5
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         );

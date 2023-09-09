@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
-import 'dart:math';
+import 'package:flutter_svg/flutter_svg.dart';
 
 Route toPlayingPage() {
   return PageRouteBuilder(
@@ -30,32 +30,9 @@ class PlayingPage extends StatefulWidget {
   State <PlayingPage> createState() => _PlayingPageState();
 }
 
-class _PlayingPageState extends State<PlayingPage> with SingleTickerProviderStateMixin {
+class _PlayingPageState extends State<PlayingPage> {
 
-  late AnimationController _controller;
-  late Animation <double> _opacityAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-
-    _opacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  bool _clicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -104,28 +81,24 @@ class _PlayingPageState extends State<PlayingPage> with SingleTickerProviderStat
                           aspectRatio: 1.0 / 1.0,
                           child: GestureDetector(
                             onTap: () {
-                              _controller.forward();
+                              setState(() {
+                                _clicked = !_clicked;
+                              });
                             },
                             child: Container(
-                              padding: EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                                 color: Colors.white,
                               ),
-                              child: AnimatedBuilder(
-                                animation: _opacityAnimation,
-                                builder: (context, child) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(max(height, width)),
-                                      border: Border.all(
-                                        color: Color.fromRGBO(171, 171, 171, _opacityAnimation.value),
-                                        width: 5
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                              child: AnimatedScale(
+                                scale: _clicked? 1.0 : 0.0,
+                                curve: Curves.easeOutExpo,
+                                duration: const Duration(milliseconds: 500),
+                                child: SvgPicture.asset(
+                                  "assets/svg/o_shape.svg",
+                                ),
+                              )
                             ),
                           ),
                         );

@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
-import '../globalWidget/blank_container.dart';
+import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/playPage/selectModePage/select_mode_page.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:tic_tac_toe/homePage/button.dart';
 import 'package:tic_tac_toe/homePage/text_animation.dart';
+import 'package:tic_tac_toe/playPage/playingPage/data.dart';
+import 'package:tic_tac_toe/globalData/data.dart';
+
+class HomeParent extends StatelessWidget {
+const HomeParent({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home()
+    );
+  }
+}
 
 class Home extends StatefulWidget {
   const Home({ Key? key }) : super(key: key);
@@ -13,6 +27,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    super.initState();
+    globalProvider = Turn();
+    globalProvider.setAllBoard = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +67,7 @@ class _HomeState extends State<Home> {
             ),
             
             const BlankContainer(flex: 11),
-
+    
             // play button
             Expanded(
               flex: 7,
@@ -66,9 +87,9 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-
+    
             const BlankContainer(flex: 5),
-
+    
             // option button
             const Expanded(
               flex: 7,
@@ -85,9 +106,9 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-
+    
             const BlankContainer(flex: 5),
-
+    
             // quit button
             const Expanded(
               flex: 7,
@@ -103,14 +124,14 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   BlankContainer(flex: 1),
-
+    
                 ],
               ),
             ),
-
-
+    
+    
             const BlankContainer(flex: 17),
-
+    
             const Expanded(
               flex: 5,
               child: Row(
@@ -130,11 +151,11 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   BlankContainer(flex: 1),
-
+    
                 ],
               ),
             ),
-
+    
           ],
         )
       ),

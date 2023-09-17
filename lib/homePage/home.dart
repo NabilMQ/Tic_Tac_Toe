@@ -31,8 +31,10 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    globalProvider = Turn();
-    globalProvider.setAllBoard = 0;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      globalProvider = Turn();
+      globalProvider.setAllBoard = 0;
+    });
   }
 
   @override

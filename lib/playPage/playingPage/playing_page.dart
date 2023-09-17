@@ -42,43 +42,43 @@ class _PlayingPageState extends State<PlayingPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return ChangeNotifierProvider.value(
-      value: globalProvider,
-      child: Consumer <Turn> (
-        builder: (context, data, child) {
-          return Scaffold(
-            body: Container(
-              width: width,
-              height: height,
-              color: const Color.fromARGB(100, 250, 250, 250),
-              child: Column(
+    return Scaffold(
+      body: Container(
+        width: width,
+        height: height,
+        color: const Color.fromARGB(100, 250, 250, 250),
+        child: Column(  
+          children: [
+            const BlankContainer(flex: 6),
+      
+            const Expanded(
+              flex: 9,
+              child: Row(
                 children: [
-                  const BlankContainer(flex: 6),
-            
-                  const Expanded(
-                    flex: 9,
-                    child: Row(
-                      children: [
-                        BlankContainer(flex: 1),
-                        Expanded(
-                          flex: 6,
-                          child: Header(text: "Your Turn"),
-                        ),
-                        BlankContainer(flex: 1),
-                      ],
-                    ),
-                  ),
-            
-                  const BlankContainer(flex: 9,),
-            
+                  BlankContainer(flex: 1),
                   Expanded(
-                    flex: 33,
-                    child: Row(
-                      children: [
-                        const BlankContainer(flex: 1),
-                        Expanded(
-                          flex: 6,
-                          child: GridView.count(
+                    flex: 6,
+                    child: Header(text: "Your Turn"),
+                  ),
+                  BlankContainer(flex: 1),
+                ],
+              ),
+            ),
+      
+            const BlankContainer(flex: 9,),
+      
+            Expanded(
+              flex: 33,
+              child: Row(
+                children: [
+                  const BlankContainer(flex: 1),
+                  Expanded(
+                    flex: 6,
+                    child: ChangeNotifierProvider.value(
+                      value: globalProvider,
+                      child: Consumer <Turn> (
+                        builder:(context, data, child) {
+                          return GridView.count(
                             crossAxisCount: 3,
                             mainAxisSpacing: 7.5,
                             crossAxisSpacing: 7.5,
@@ -97,7 +97,7 @@ class _PlayingPageState extends State<PlayingPage> {
                                       color: Colors.white,
                                     ),
                                     child: AnimatedScale(
-                                      scale: data.isClicked(index ~/ 3, index % 3) ? 1.0 : 0.0,
+                                      scale: data.board[index ~/ 3][index % 3] != 0 ? 1.0 : 0.0,
                                       curve: Curves.easeOutExpo,
                                       duration: const Duration(milliseconds: 500),
                                       child: SvgPicture.asset(
@@ -108,19 +108,19 @@ class _PlayingPageState extends State<PlayingPage> {
                                 ),
                               );
                             }),
-                          ),
-                        ),
-                        const BlankContainer(flex: 1),
-                      ],
+                          );
+                        },
+                      ),
                     ),
                   ),
-            
-                  const BlankContainer(flex: 23),
+                  const BlankContainer(flex: 1),
                 ],
               ),
             ),
-          );
-        },
+      
+            const BlankContainer(flex: 23),
+          ],
+        ),
       ),
     );
   }

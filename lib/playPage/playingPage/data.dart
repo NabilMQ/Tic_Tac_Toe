@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class Turn extends ChangeNotifier {
   late List <List <int> > _board;
+  int numberTurn = 1;
+  String oShape = "assets/svg/o_shape.svg";
+  String xShape = "assets/svg/x_shape.svg";
 
   List <List <int> > get board => _board;
 
@@ -15,15 +18,15 @@ class Turn extends ChangeNotifier {
     notifyListeners();
   }
 
-  // bool isClicked(int row, int column) {
-  //   if (board[row][column] != 0) {
-  //     notifyListeners();
-  //     return true;
-  //   }
-  //   notifyListeners();
-  //   return false;
-  // }
-  // Another exception was thrown: setState() or markNeedsBuild() called during build.
+  bool isClicked(int row, int column) {
+    if (board[row][column] != 0) {
+      notifyListeners();
+      return true;
+    }
+    notifyListeners();
+    return false;
+  }
+  // be careful with Another exception was thrown: setState() or markNeedsBuild() called during build.
 
   void checkBoard() {
     if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != 0) {
@@ -45,6 +48,15 @@ class Turn extends ChangeNotifier {
         break;
       }
     }
+  }
+
+  bool whoseTurn(int number) {
+    if (number % 2 == 0) {
+      notifyListeners();
+      return true;
+    }
+    notifyListeners();
+    return false;
   }
 
 }

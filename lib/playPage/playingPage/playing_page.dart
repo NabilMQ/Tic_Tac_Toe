@@ -87,11 +87,19 @@ class _PlayingPageState extends State<PlayingPage> {
                                 aspectRatio: 1.0 / 1.0,
                                 child: GestureDetector(
                                   onTap: () {
-                                    data.setBoard(index ~/ 3, index % 3, 1);
-                                    data.checkBoard();
+                                    if (data.isClicked(index ~/ 3, index % 3) == false) {
+                                      if (data.numberTurn % 2 == 1) {
+                                        data.setBoard(index ~/ 3, index % 3, 1);
+                                      }
+                                      else {
+                                        data.setBoard(index ~/ 3, index % 3, 2);
+                                      }
+                                      data.checkBoard();
+                                      data.numberTurn++;
+                                    }
                                   },
                                   child: Container(
-                                    padding: const EdgeInsets.all(5),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       color: Colors.white,
@@ -101,7 +109,7 @@ class _PlayingPageState extends State<PlayingPage> {
                                       curve: Curves.easeOutExpo,
                                       duration: const Duration(milliseconds: 500),
                                       child: SvgPicture.asset(
-                                        "assets/svg/o_shape.svg",
+                                        data.board[index ~/ 3][index % 3] % 2 == 1 ? data.oShape : data.xShape, 
                                       ),
                                     )
                                   ),

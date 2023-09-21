@@ -43,91 +43,134 @@ class _PlayingPageState extends State<PlayingPage> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        color: const Color.fromARGB(100, 250, 250, 250),
-        child: Column(  
-          children: [
-            const BlankContainer(flex: 6),
-      
-            const Expanded(
-              flex: 9,
-              child: Row(
+      body: ChangeNotifierProvider.value(
+        value: globalProvider,
+        child: Consumer <Turn> (
+          builder: (context, data, child) {
+            return Container(
+              width: width,
+              height: height,
+              color: const Color.fromARGB(100, 250, 250, 250),
+              child: Stack(
                 children: [
-                  BlankContainer(flex: 1),
-                  Expanded(
-                    flex: 6,
-                    child: Header(text: "Your Turn"),
-                  ),
-                  BlankContainer(flex: 1),
-                ],
-              ),
-            ),
-      
-            const BlankContainer(flex: 9,),
-      
-            Expanded(
-              flex: 33,
-              child: Row(
-                children: [
-                  const BlankContainer(flex: 1),
-                  Expanded(
-                    flex: 6,
-                    child: ChangeNotifierProvider.value(
-                      value: globalProvider,
-                      child: Consumer <Turn> (
-                        builder:(context, data, child) {
-                          return GridView.count(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 7.5,
-                            crossAxisSpacing: 7.5,
-                            children: List.generate(9, (index) {
-                              return AspectRatio(
-                                aspectRatio: 1.0 / 1.0,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (data.isClicked(index ~/ 3, index % 3) == false) {
-                                      if (data.numberTurn % 2 == 1) {
-                                        data.setBoard(index ~/ 3, index % 3, 1);
-                                      }
-                                      else {
-                                        data.setBoard(index ~/ 3, index % 3, 2);
-                                      }
-                                      data.checkBoard();
-                                      data.numberTurn++;
-                                    }
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.white,
-                                    ),
-                                    child: AnimatedScale(
-                                      scale: data.board[index ~/ 3][index % 3] != 0 ? 1.0 : 0.0,
-                                      curve: Curves.easeOutExpo,
-                                      duration: const Duration(milliseconds: 500),
-                                      child: SvgPicture.asset(
-                                        data.board[index ~/ 3][index % 3] % 2 == 1 ? data.oShape : data.xShape, 
-                                      ),
-                                    )
-                                  ),
-                                ),
-                              );
-                            }),
-                          );
-                        },
+                  Column(  
+                    children: [
+                      const BlankContainer(flex: 6),
+                      
+                      const Expanded(
+                        flex: 9,
+                        child: Row(
+                          children: [
+                            BlankContainer(flex: 1),
+                            Expanded(
+                              flex: 6,
+                              child: Header(text: "Your Turn"),
+                            ),
+                            BlankContainer(flex: 1),
+                          ],
+                        ),
                       ),
-                    ),
+                      
+                      const BlankContainer(flex: 9,),
+                      
+                      Expanded(
+                        flex: 33,
+                        child: Row(
+                          children: [
+                            const BlankContainer(flex: 1),
+                            Expanded(
+                              flex: 6,
+                              child: GridView.count(
+                                crossAxisCount: 3,
+                                mainAxisSpacing: 7.5,
+                                crossAxisSpacing: 7.5,
+                                children: List.generate(9, (index) {
+                                  return AspectRatio(
+                                    aspectRatio: 1.0 / 1.0,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (data.isClicked(index ~/ 3, index % 3) == false) {
+                                          if (data.numberTurn % 2 == 1) {
+                                            data.setBoard(index ~/ 3, index % 3, 1);
+                                          }
+                                          else {
+                                            data.setBoard(index ~/ 3, index % 3, 2);
+                                          }
+                                          data.checkBoard();
+                                          data.numberTurn++;
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: Colors.white,
+                                        ),
+                                        child: AnimatedScale(
+                                          scale: data.board[index ~/ 3][index % 3] != 0 ? 1.0 : 0.0,
+                                          curve: Curves.easeOutExpo,
+                                          duration: const Duration(milliseconds: 500),
+                                          child: SvgPicture.asset(
+                                            data.board[index ~/ 3][index % 3] % 2 == 1 ? data.oShape : data.xShape, 
+                                          ),
+                                        )
+                                      ),
+                                    ),
+                                  );
+                                }),
+                              ),
+                            ),
+                            const BlankContainer(flex: 1),
+                          ],
+                        ),
+                      ),
+                      
+                      const BlankContainer(flex: 23),
+                    ],
                   ),
-                  const BlankContainer(flex: 1),
+          
+                  Builder(
+                    builder: (context) {
+                      if (data.completed) {
+                        return Container(
+                          width: width,
+                          height: height,
+                          color: const Color.fromRGBO(0, 0, 0, 0.3),
+                          child: Column(
+                            children: [
+                              const BlankContainer(flex: 28),
+                              Expanded(
+                                flex: 27,
+                                child: Row(
+                                  children: [
+                                    const BlankContainer(flex: 1),
+                                    Expanded(
+                                      flex: 6,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    const BlankContainer(flex: 1),
+                                  ],
+                                ),
+                              ),
+                              const BlankContainer(flex: 24),
+                            ],
+                          ),
+                        );
+                      }
+                      else {
+                        return const SizedBox.shrink();
+                      }
+                    },
+                  ),
                 ],
               ),
-            ),
-      
-            const BlankContainer(flex: 23),
-          ],
+            );
+          },
         ),
       ),
     );

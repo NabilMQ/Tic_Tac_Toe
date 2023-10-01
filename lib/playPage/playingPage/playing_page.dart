@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
 import 'package:tic_tac_toe/globalData/data.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
@@ -149,8 +150,177 @@ class _PlayingPageState extends State<PlayingPage> {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(20),
-                                          color: Colors.white,
+                                          color: const Color.fromARGB(255, 250, 250, 250),
                                         ),
+                                        child: Column(
+                                          children: [
+                                            const BlankContainer(flex: 4),
+
+                                            Expanded(
+                                              flex: 3,
+                                              child: Row(
+                                                children: [
+                                                  const BlankContainer(flex: 1),
+
+                                                  Expanded(
+                                                    flex: 4,
+                                                    child: Container(
+                                                      child: const Header(text: "You Win")
+                                                    ),
+                                                  ),
+
+                                                  const BlankContainer(flex: 1),
+                                                ],
+                                              ),
+                                            ),
+
+                                            const BlankContainer(flex: 4),
+
+                                            Expanded(
+                                              flex: 11,
+                                              child: Row(
+                                                children: [
+                                                  const BlankContainer(flex: 1),
+
+                                                  Expanded(
+                                                    flex: 4,
+                                                    child: Row(
+                                                      children: [
+                                                        Expanded(
+                                                          flex: 11,
+                                                          child: Center(
+                                                            child: AspectRatio(
+                                                              aspectRatio: 1,
+                                                              child: Container(
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius: BorderRadius.circular(20),
+                                                                  color: Colors.white,
+                                                                ),
+                                                                child: Column(
+                                                                  children: [
+                                                                    BlankContainer(flex: 2),
+                                                              
+                                                                    Expanded(
+                                                                      flex: 3,
+                                                                      child: Icon(
+                                                                        CustomIcons.menu_button_wide,
+                                                                        fill: 1.0,
+                                                                      ),
+                                                                    ),
+                                                              
+                                                                    BlankContainer(flex: 2),
+                                                              
+                                                                    Expanded(
+                                                                      flex: 2,
+                                                                      child: Row(
+                                                                        children: [
+                                                                          BlankContainer(flex: 1),
+
+                                                                          Expanded(
+                                                                            flex: 9,
+                                                                            child: Center(
+                                                                              child: FittedBox(
+                                                                                fit: BoxFit.scaleDown,
+                                                                                child: Text(
+                                                                                  "Back To Menu",
+                                                                                  style: TextStyle(
+                                                                                      fontFamily: "Roboto Condensed",
+                                                                                      fontWeight: FontWeight.normal,
+                                                                                      fontSize: 24,
+                                                                                      letterSpacing: 0,
+                                                                                    ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+
+                                                                          BlankContainer(flex: 1),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                              
+                                                                    BlankContainer(flex: 2),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+
+                                                        const BlankContainer(flex: 1),
+
+                                                        Expanded(
+                                                          flex: 11,
+                                                          child: Center(
+                                                            child: AspectRatio(
+                                                              aspectRatio: 1,
+                                                              child: Container(
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius: BorderRadius.circular(20),
+                                                                  color: Colors.white,
+                                                                ),
+                                                                child: Column(
+                                                                  children: [
+                                                                    BlankContainer(flex: 2),
+                                                              
+                                                                    Expanded(
+                                                                      flex: 3,
+                                                                      child: Icon(
+                                                                        CustomIcons.play,
+                                                                        fill: 1.0,
+                                                                      ),
+                                                                    ),
+                                                              
+                                                                    BlankContainer(flex: 2),
+                                                              
+                                                                     Expanded(
+                                                                      flex: 2,
+                                                                      child: Row(
+                                                                        children: [
+                                                                          BlankContainer(flex: 1),
+
+                                                                          Expanded(
+                                                                            flex: 9,
+                                                                            child: Center(
+                                                                              child: FittedBox(
+                                                                                fit: BoxFit.scaleDown,
+                                                                                child: Text(
+                                                                                  "Play Again",
+                                                                                  style: TextStyle(
+                                                                                      fontFamily: "Roboto Condensed",
+                                                                                      fontWeight: FontWeight.normal,
+                                                                                      fontSize: 24,
+                                                                                      letterSpacing: 0,
+                                                                                    ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          
+                                                                          BlankContainer(flex: 1),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                              
+                                                                    BlankContainer(flex: 2),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+
+                                                  const BlankContainer(flex: 1),
+                                                ],
+                                              ),
+                                            ),
+
+                                            const BlankContainer(flex: 4),
+                                          ],
+                                        )
                                       ),
                                     ),
                                     const BlankContainer(flex: 1),

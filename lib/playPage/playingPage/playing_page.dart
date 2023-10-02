@@ -5,7 +5,7 @@ import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:provider/provider.dart';
 import 'data.dart';
 import 'package:tic_tac_toe/playPage/playingPage/widget/board.dart';
-import 'package:tic_tac_toe/playPage/playingPage/widget/custom_alert.dart';
+import 'package:tic_tac_toe/playPage/playingPage/custom_alert/custom_alert.dart';
 
 Route toPlayingPage() {
   return PageRouteBuilder(

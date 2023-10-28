@@ -8,7 +8,7 @@ import 'package:tic_tac_toe/playPage/playingPage/data.dart';
 import 'package:tic_tac_toe/globalData/data.dart';
 
 class HomeParent extends StatelessWidget {
-const HomeParent({ Key? key }) : super(key: key);
+const HomeParent({ super.key });
 
   @override
   Widget build(BuildContext context){

@@ -67,6 +67,7 @@ class _SelectModeState extends State<SelectMode> {
 
             const BlankContainer(flex: 9),
 
+            // Player vs Computer
             Expanded(
               flex: 17,
               child: Row(
@@ -79,6 +80,7 @@ class _SelectModeState extends State<SelectMode> {
                       icon: CustomIcons.laptop,
                       route: () {
                         Navigator.of(context).push(toPlayingPage());
+
                       },
                     ),
                   ),
@@ -89,6 +91,7 @@ class _SelectModeState extends State<SelectMode> {
 
             const BlankContainer(flex: 5),
 
+            // Player vs Computer
             Expanded(
               flex: 17,
               child: Row(

@@ -6,12 +6,35 @@ class Turn extends ChangeNotifier {
   bool completed = false;
   String oShape = "assets/svg/o_shape.svg";
   String xShape = "assets/svg/x_shape.svg";
+  bool _isPVC = false;
+  bool _isPVP = false;
+  String game = "Your Turn";
 
   List <List <int> > get board => _board;
+  bool get pvc => _isPVC;
+  bool get pvp => _isPVP;
 
   set setAllBoard(int blank) {
     _board = List.generate(3, (row) =>  List.generate(3, (col) => blank));
     notifyListeners();
+  }
+
+  set setGame(String game) {
+    if (game == "PVC") {
+      _isPVC = true;
+    }
+    else if (game == "PVP") {
+      _isPVP = true;
+    }
+  }
+
+  set setPVCTurn(int numberTurn) {
+    if (numberTurn % 2 == 1) {
+      game = "Computer Turn";
+    }
+    else {
+      game = "Your Turn";
+    }
   }
 
   void setBoard(int row, int column, int value) {

@@ -28,7 +28,7 @@ Route toPlayingPage() {
 }
 
 class PlayingPage extends StatefulWidget {
-  const PlayingPage({ Key? key }) : super(key: key);
+  const PlayingPage({ super.key });
 
   @override
   State <PlayingPage> createState() => _PlayingPageState();

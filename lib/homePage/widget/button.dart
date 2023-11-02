@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 
 class Button extends StatefulWidget {
   const Button({ 
-    Key? key,
+    super.key,
     required this.text,
     this.route,
     this.isPop = false,
     this.isExit = false,
-  }) : super(key: key);
+  });
 
   final String text;
   final Function? route;

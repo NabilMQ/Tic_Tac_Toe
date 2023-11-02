@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
+import 'package:tic_tac_toe/globalData/data.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
+import 'package:tic_tac_toe/playPage/playingPage/data.dart';
 import 'button.dart';
 import 'package:tic_tac_toe/playPage/playingPage/playing_page.dart';
 
@@ -26,7 +29,7 @@ Route toSelectModePage() {
 }
 
 class SelectMode extends StatefulWidget {
-  const SelectMode({ Key? key }) : super(key: key);
+  const SelectMode({ super.key });
 
   @override
   State <SelectMode> createState() => _SelectModeState();
@@ -39,82 +42,92 @@ class _SelectModeState extends State<SelectMode> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        color: const Color.fromARGB(100, 250, 250, 250),
-        child: Column(
-          children: [
-            const BlankContainer(flex: 6),
-
-            // header
-            const Expanded(
-              flex: 9,
-              child: Row(
+    return ChangeNotifierProvider.value(
+      value: globalProvider,
+      child: Consumer <Turn> (
+        builder: (context, data, child) {
+          return Scaffold(
+            body: Container(
+              width: width,
+              height: height,
+              color: const Color.fromARGB(100, 250, 250, 250),
+              child: Column(
                 children: [
-                  BlankContainer(flex: 1),
+                  const BlankContainer(flex: 6),
+            
+                  // header
+                  const Expanded(
+                    flex: 9,
+                    child: Row(
+                      children: [
+                        BlankContainer(flex: 1),
+                        Expanded(
+                          flex: 6,
+                          child: Header(
+                            text: "Select Mode",
+                          ),
+                        ),
+                        BlankContainer(flex: 1),
+                      ],
+                    )
+                  ),
+            
+                  const BlankContainer(flex: 9),
+            
+                  // Player vs Computer
                   Expanded(
-                    flex: 6,
-                    child: Header(
-                      text: "Select Mode",
+                    flex: 17,
+                    child: Row(
+                      children: [
+                        const BlankContainer(flex: 1),
+                        Expanded(
+                          flex: 2,
+                          child: Button(
+                            text: "Player Vs Computer",
+                            icon: CustomIcons.laptop,
+                            route: () {
+                              data.setGame = "PVC";
+                              data.pvc ? data.setPVCTurn = data.numberTurn : data.setPVPTurn = data.numberTurn;
+                              Navigator.of(context).push(toPlayingPage());
+                            },
+                          ),
+                        ),
+                        const BlankContainer(flex: 1),
+                      ],
                     ),
                   ),
-                  BlankContainer(flex: 1),
-                ],
-              )
-            ),
-
-            const BlankContainer(flex: 9),
-
-            // Player vs Computer
-            Expanded(
-              flex: 17,
-              child: Row(
-                children: [
-                  const BlankContainer(flex: 1),
+            
+                  const BlankContainer(flex: 5),
+            
+                  // Player vs Computer
                   Expanded(
-                    flex: 2,
-                    child: Button(
-                      text: "Player Vs Computer",
-                      icon: CustomIcons.laptop,
-                      route: () {
-                        Navigator.of(context).push(toPlayingPage());
-
-                      },
+                    flex: 17,
+                    child: Row(
+                      children: [
+                        const BlankContainer(flex: 1),
+                        Expanded(
+                          flex: 2,
+                          child: Button(
+                            text: "Player Vs Player",
+                            icon: CustomIcons.person,
+                            route: () {
+                              data.setGame = "PVP";
+                              data.pvc ? data.setPVCTurn = data.numberTurn : data.setPVPTurn = data.numberTurn;
+                              Navigator.of(context).push(toPlayingPage());
+                            },
+                          ),
+                        ),
+                        const BlankContainer(flex: 1),
+                      ],
                     ),
                   ),
-                  const BlankContainer(flex: 1),
+            
+                  const BlankContainer(flex: 16),
                 ],
               ),
             ),
-
-            const BlankContainer(flex: 5),
-
-            // Player vs Computer
-            Expanded(
-              flex: 17,
-              child: Row(
-                children: [
-                  const BlankContainer(flex: 1),
-                  Expanded(
-                    flex: 2,
-                    child: Button(
-                      text: "Player Vs Player",
-                      icon: CustomIcons.person,
-                      route: () {
-                        Navigator.of(context).push(toPlayingPage());
-                      },
-                    ),
-                  ),
-                  const BlankContainer(flex: 1),
-                ],
-              ),
-            ),
-
-            const BlankContainer(flex: 16),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

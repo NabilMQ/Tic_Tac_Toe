@@ -4,9 +4,9 @@ import 'package:tic_tac_toe/playPage/playingPage/data.dart';
 
 class Board extends StatefulWidget {
   const Board({ 
-    Key? key,
+    super.key,
     required this.data,
-  }) : super(key: key);
+  });
 
   final Turn data;
 
@@ -26,15 +26,17 @@ class _BoardState extends State <Board> {
           aspectRatio: 1.0 / 1.0,
           child: GestureDetector(
             onTap: () {
+              widget.data.numberTurn++;
               if (widget.data.isClicked(index ~/ 3, index % 3) == false) {
                 if (widget.data.numberTurn % 2 == 1) {
                   widget.data.setBoard(index ~/ 3, index % 3, 1);
+                  widget.data.pvc ? widget.data.setPVCTurn = widget.data.numberTurn : widget.data.setPVPTurn = widget.data.numberTurn;
                 }
                 else {
                   widget.data.setBoard(index ~/ 3, index % 3, 2);
+                  widget.data.pvc ? widget.data.setPVCTurn = widget.data.numberTurn : widget.data.setPVPTurn = widget.data.numberTurn;
                 }
                 widget.data.checkBoard();
-                widget.data.numberTurn++;
               }
             },
             child: Container(

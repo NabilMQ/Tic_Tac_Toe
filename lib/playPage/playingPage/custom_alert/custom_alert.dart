@@ -4,7 +4,7 @@ import 'package:tic_tac_toe/playPage/playingPage/custom_alert/winner_widget/winn
 import 'package:tic_tac_toe/playPage/playingPage/custom_alert/content_widget/content.dart';
 
 class CustomAlert extends StatefulWidget {
-  const CustomAlert({ Key? key }) : super(key: key);
+  const CustomAlert({ super.key });
 
   @override
   State <CustomAlert> createState() => _CustomAlertState();

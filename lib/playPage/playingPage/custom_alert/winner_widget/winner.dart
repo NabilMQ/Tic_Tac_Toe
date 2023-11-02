@@ -3,7 +3,7 @@ import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 
 class WinnerWidget extends StatefulWidget {
-  const WinnerWidget({ Key? key }) : super(key: key);
+  const WinnerWidget({ super.key });
 
   @override
   State <WinnerWidget> createState() => _WinnerWidgetState();

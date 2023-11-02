@@ -4,7 +4,7 @@ import 'package:tic_tac_toe/playPage/playingPage/custom_alert/content_widget/wid
 import 'package:tic_tac_toe/playPage/playingPage/custom_alert/content_widget/widget/play_again.dart';
 
 class Content extends StatefulWidget {
-  const Content({ Key? key }) : super(key: key);
+  const Content({ super.key });
 
   @override
   State <Content> createState() => _ContentState();

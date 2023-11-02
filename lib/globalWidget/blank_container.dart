@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class BlankContainer extends StatefulWidget {
   const BlankContainer({
-     Key? key,
+     super.key,
      required this.flex,
-    }) : super(key: key);
+    });
 
   final int flex;
 

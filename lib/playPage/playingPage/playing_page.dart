@@ -65,16 +65,16 @@ class _PlayingPageState extends State<PlayingPage> {
                       const BlankContainer(flex: 6),
                       
                       // header
-                      const Expanded(
+                      Expanded(
                         flex: 9,
                         child: Row(
                           children: [
-                            BlankContainer(flex: 1),
+                            const BlankContainer(flex: 1),
                             Expanded(
                               flex: 6,
-                              child: Header(text: "Your Turn"),
+                              child: Header(text: data.game),
                             ),
-                            BlankContainer(flex: 1),
+                            const BlankContainer(flex: 1),
                           ],
                         ),
                       ),

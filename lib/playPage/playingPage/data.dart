@@ -26,15 +26,30 @@ class Turn extends ChangeNotifier {
     else if (game == "PVP") {
       _isPVP = true;
     }
+
+    notifyListeners();
   }
 
   set setPVCTurn(int numberTurn) {
     if (numberTurn % 2 == 1) {
-      game = "Computer Turn";
-    }
-    else {
       game = "Your Turn";
     }
+    else {
+      game = "Computer Turn";
+    }
+
+    notifyListeners();
+  }
+
+  set setPVPTurn(int numberTurn) {
+    if (numberTurn % 2 == 1) {
+      game = "Player 1 Turn";
+    }
+    else {
+      game = "Player 2 Turn";
+    }
+
+    notifyListeners();
   }
 
   void setBoard(int row, int column, int value) {
@@ -103,6 +118,5 @@ class Turn extends ChangeNotifier {
     _board = List.generate(3, (row) =>  List.generate(3, (col) => 0));
     numberTurn = 1;
     completed = false;
-    notifyListeners();
   }
 }

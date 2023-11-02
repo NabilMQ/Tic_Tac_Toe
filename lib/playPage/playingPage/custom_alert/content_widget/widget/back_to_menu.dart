@@ -3,7 +3,7 @@ import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 
 class BackToMenu extends StatefulWidget {
-  const BackToMenu({ Key? key }) : super(key: key);
+  const BackToMenu({ super.key });
 
   @override
   State <BackToMenu> createState() => _BackToMenuState();

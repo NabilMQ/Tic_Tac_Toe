@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class Button extends StatefulWidget {
   const Button({ 
-    Key? key,
+    super.key,
     required this.text,
     required this.icon,
     this.route,
     this.isPop = false,
-  }) : super(key: key);
+  });
 
   final String text;
   final IconData icon;

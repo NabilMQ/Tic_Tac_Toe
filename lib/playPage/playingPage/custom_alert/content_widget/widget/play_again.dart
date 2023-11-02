@@ -3,7 +3,7 @@ import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 
 class PlayAgain extends StatefulWidget {
-  const PlayAgain({ Key? key }) : super(key: key);
+  const PlayAgain({ super.key });
 
   @override
   State <PlayAgain> createState() => _PlayAgainState();

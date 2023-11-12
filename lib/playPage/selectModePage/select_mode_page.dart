@@ -99,7 +99,7 @@ class _SelectModeState extends State<SelectMode> {
             
                   const BlankContainer(flex: 5),
             
-                  // Player vs Computer
+                  // Player vs Player
                   Expanded(
                     flex: 17,
                     child: Row(

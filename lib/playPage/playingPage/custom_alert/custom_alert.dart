@@ -12,7 +12,6 @@ class CustomAlert extends StatefulWidget {
 
 class _CustomAlertState extends State <CustomAlert> {
   @override
-
   Widget build(BuildContext context) {
 
     double width = MediaQuery.of(context).size.width;

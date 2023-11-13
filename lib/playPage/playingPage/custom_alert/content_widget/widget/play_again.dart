@@ -29,6 +29,7 @@ class _PlayAgainState extends State<PlayAgain> {
                   onTap: () {
                     Navigator.of(context).pop();
                     data.numberTurn = 1;
+                    data.draw = false;
                     data.pvc ? data.setPVCTurn = data.numberTurn : data.setPVPTurn = data.numberTurn;
                     Navigator.of(context).push(toPlayingPage());
                   },

@@ -10,6 +10,7 @@ class Turn extends ChangeNotifier {
   bool _isPVP = false;
   String game = "Your Turn";
   String winner = "You";
+  bool draw = false;
 
   List <List <int> > get board => _board;
   bool get pvc => _isPVC;
@@ -105,6 +106,19 @@ class Turn extends ChangeNotifier {
   }
   // be careful with Another exception was thrown: setState() or markNeedsBuild() called during build.
 
+  bool isFull() {
+    print(board);
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        if (board[i][j] == 0) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   void checkBoard() {
     print(board);
     if (isSame(board[0][0], board[1][1], board[2][2]) && board[0][0] != 0) {
@@ -137,6 +151,12 @@ class Turn extends ChangeNotifier {
         notifyListeners();
         break;
       }
+    }
+
+    if (isFull()) {
+      print("draw\n");
+      draw = true;
+      notifyListeners();
     }
   }
 

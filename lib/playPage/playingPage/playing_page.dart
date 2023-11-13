@@ -103,8 +103,11 @@ class _PlayingPageState extends State<PlayingPage> {
                   // alert dialog
                   Builder(
                     builder: (context) {
-                      if (data.completed) { // check if the game is completed
-                        return const CustomAlert();
+                      if (data.draw) {
+                        return CustomAlert();
+                      }
+                      else if (data.completed) { // check if the game is completed
+                        return CustomAlert();
                       }
                       else { // if not completed yet
                         return const SizedBox.shrink(); 

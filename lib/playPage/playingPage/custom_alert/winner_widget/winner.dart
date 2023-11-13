@@ -23,14 +23,14 @@ class _WinnerWidgetState extends State <WinnerWidget> {
             flex: 3,
             child: Row(
               children: [
-                BlankContainer(flex: 1),
+                const BlankContainer(flex: 1),
         
                 Expanded(
                   flex: 4,
-                  child: Header(text: "${data.winner} Win"),
+                  child: Header(text: data.draw ? "Draw" : "${data.winner} Win"),
                 ),
         
-                BlankContainer(flex: 1),
+                const BlankContainer(flex: 1),
               ],
             ),
           );

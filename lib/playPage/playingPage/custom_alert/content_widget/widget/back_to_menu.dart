@@ -27,6 +27,7 @@ class _BackToMenuState extends State<BackToMenu> {
                 child: GestureDetector(
                   onTap: () {
                     data.numberTurn = 1;
+                    data.draw = false;
                     data.resetPVC = false;
                     data.resetPVP = false;
                     Navigator.of(context).pop();

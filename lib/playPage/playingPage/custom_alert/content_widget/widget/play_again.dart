@@ -5,6 +5,7 @@ import 'package:tic_tac_toe/globalData/data.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/playPage/playingPage/data.dart';
 import 'package:tic_tac_toe/playPage/playingPage/playing_page.dart';
+import 'package:tic_tac_toe/globalData/audio.dart';
 
 class PlayAgain extends StatefulWidget {
   const PlayAgain({ super.key });
@@ -26,7 +27,8 @@ class _PlayAgainState extends State<PlayAgain> {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    playClickSound();
                     Navigator.of(context).pop();
                     data.numberTurn = 1;
                     data.draw = false;

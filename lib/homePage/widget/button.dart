@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tic_tac_toe/globalData/audio.dart';
 
 class Button extends StatefulWidget {
   const Button({ 
@@ -54,8 +55,10 @@ class _ButtonState extends State<Button> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) {
+      onTapDown: (_) async {
+        playClickSound();
         _controllerColor.forward();
+
         Future.delayed(const Duration(milliseconds: 250), () {
           _controllerColor.reverse();
         });

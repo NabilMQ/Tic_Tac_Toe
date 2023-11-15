@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/customIcons/my_flutter_app_icons.dart';
+import 'package:tic_tac_toe/globalData/audio.dart';
 import 'package:tic_tac_toe/globalData/data.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/playPage/playingPage/data.dart';
@@ -26,6 +27,7 @@ class _BackToMenuState extends State<BackToMenu> {
                 aspectRatio: 1,
                 child: GestureDetector(
                   onTap: () {
+                    playClickSound();
                     data.numberTurn = 1;
                     data.draw = false;
                     data.resetPVC = false;

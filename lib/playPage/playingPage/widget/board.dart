@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tic_tac_toe/globalData/audio.dart';
 import 'package:tic_tac_toe/playPage/playingPage/data.dart';
 
 class Board extends StatefulWidget {
@@ -25,7 +26,8 @@ class _BoardState extends State <Board> {
         return AspectRatio(
           aspectRatio: 1.0 / 1.0,
           child: GestureDetector(
-            onTap: () {
+            onTap: () async {
+              playClickSound();
               widget.data.numberTurn++;
               if (widget.data.isClicked(index ~/ 3, index % 3) == false) {
                 if (widget.data.numberTurn % 2 == 1) {

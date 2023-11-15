@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/globalData/audio.dart';
 import 'package:tic_tac_toe/globalData/data.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
@@ -104,10 +105,17 @@ class _PlayingPageState extends State<PlayingPage> {
                   Builder(
                     builder: (context) {
                       if (data.draw) {
-                        return CustomAlert();
+                        playDrawSound();
+                        return const CustomAlert();
                       }
                       else if (data.completed) { // check if the game is completed
-                        return CustomAlert();
+                        if (data.pvc && data.winner == "Computer") {
+                          playLosingSound();
+                        }
+                        else if (data.pvc || data.pvp){
+                          playWinningSound();
+                        }
+                        return const CustomAlert();
                       }
                       else { // if not completed yet
                         return const SizedBox.shrink(); 

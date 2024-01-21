@@ -4,8 +4,6 @@ import 'package:tic_tac_toe/playPage/selectModePage/select_mode_page.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
 import 'package:tic_tac_toe/homePage/widget/button.dart';
 import 'package:tic_tac_toe/homePage/widget/text_animation.dart';
-import 'package:tic_tac_toe/playPage/playingPage/data.dart';
-import 'package:tic_tac_toe/globalData/data.dart';
 
 class HomeParent extends StatelessWidget {
 const HomeParent({ super.key });
@@ -27,15 +25,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      globalProvider = Turn();
-      globalProvider.setAllBoard = 0;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,8 +3,6 @@ import 'package:tic_tac_toe/globalData/audio.dart';
 import 'package:tic_tac_toe/globalData/data.dart';
 import 'package:tic_tac_toe/globalWidget/blank_container.dart';
 import 'package:tic_tac_toe/globalWidget/header.dart';
-import 'package:provider/provider.dart';
-import 'data.dart';
 import 'package:tic_tac_toe/playPage/playingPage/widget/board.dart';
 import 'package:tic_tac_toe/playPage/playingPage/custom_alert/custom_alert.dart';
 
@@ -39,93 +37,86 @@ class PlayingPage extends StatefulWidget {
 class _PlayingPageState extends State<PlayingPage> {
 
   @override
-  void initState() {
-    super.initState();
-    globalProvider.newGame();
-  }
-
-  @override
   Widget build(BuildContext context) {
 
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: ChangeNotifierProvider.value(
-        value: globalProvider,
-        child: Consumer <Turn> (
-          builder: (context, data, child) {
-            return Container(
-              width: width,
-              height: height,
-              color: const Color.fromARGB(100, 250, 250, 250),
-              child: Stack(
-                children: [
-                  Column(  
+      body: Container(
+        width: width,
+        height: height,
+        color: const Color.fromARGB(100, 250, 250, 250),
+        child: Stack(
+          children: [
+            Column(  
+              children: [
+                const BlankContainer(flex: 6),
+                
+                // header
+                Expanded(
+                  flex: 9,
+                  child: Row(
                     children: [
-                      const BlankContainer(flex: 6),
-                      
-                      // header
+                      const BlankContainer(flex: 1),
                       Expanded(
-                        flex: 9,
-                        child: Row(
-                          children: [
-                            const BlankContainer(flex: 1),
-                            Expanded(
-                              flex: 6,
-                              child: Header(text: data.game),
-                            ),
-                            const BlankContainer(flex: 1),
-                          ],
+                        flex: 6,
+                        child: ValueListenableBuilder(
+                          valueListenable: turn,
+                          builder: (context, value, child) {
+                            return Header(text: value);
+                          },
                         ),
                       ),
-                      
-                      const BlankContainer(flex: 9,),
-                      
-                      // board
-                      Expanded(
-                        flex: 33,
-                        child: Row(
-                          children: [
-                            const BlankContainer(flex: 1),
-                            Expanded(
-                              flex: 6,
-                              child: Board(data: data),
-                            ),
-                            const BlankContainer(flex: 1),
-                          ],
-                        ),
-                      ),
-                      
-                      const BlankContainer(flex: 23),
+                      const BlankContainer(flex: 1),
                     ],
                   ),
-          
-                  // alert dialog
-                  Builder(
-                    builder: (context) {
-                      if (data.draw) {
-                        playDrawSound();
-                        return const CustomAlert();
-                      }
-                      else if (data.completed) { // check if the game is completed
-                        if (data.pvc && data.winner == "Computer") {
-                          playLosingSound();
-                        }
-                        else if (data.pvc || data.pvp){
-                          playWinningSound();
-                        }
-                        return const CustomAlert();
-                      }
-                      else { // if not completed yet
-                        return const SizedBox.shrink(); 
-                      }
-                    },
+                ),
+                
+                const BlankContainer(flex: 9,),
+                
+                // board
+                const Expanded(
+                  flex: 33,
+                  child: Row(
+                    children: [
+                      BlankContainer(flex: 1),
+                      Expanded(
+                        flex: 6,
+                        child: Board(),
+                      ),
+                      BlankContainer(flex: 1),
+                    ],
                   ),
-                ],
-              ),
-            );
-          },
+                ),
+                
+                const BlankContainer(flex: 23),
+              ],
+            ),
+    
+            // alert dialog
+            ListenableBuilder(
+              listenable: game,
+              builder: (context, child) {
+                if (draw.value) {
+                  playDrawSound();
+                  return const CustomAlert();
+                }
+                else if (completed.value) { // check if the game is completed
+                  if (isPVC.value && winner.value == "Computer") {
+                    playLosingSound();
+                  }
+                  else if (isPVC.value || isPVP.value){
+                    playWinningSound();
+                  }
+                  return const CustomAlert();
+                }
+                else { // if not completed yet
+                  return const SizedBox.shrink(); 
+                }
+              },
+            ),
+          ],
         ),
       ),
     );

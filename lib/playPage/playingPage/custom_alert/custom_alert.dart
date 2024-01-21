@@ -17,10 +17,8 @@ class _CustomAlertState extends State <CustomAlert> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
+    return PopScope(
+      canPop: false,
       child: Container(
         width: width,
         height: height,

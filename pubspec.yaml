@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.7
-  provider: ^6.0.5
   soundpool: ^2.4.1
 
 dev_dependencies:
